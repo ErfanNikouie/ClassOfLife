@@ -1,11 +1,19 @@
 // Class of Life.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
+#include "Genome.h"
 using namespace std;
 
 int main()
 {
     cout << "Hello World!" << endl;
+
+    Genome gen = Genome("AAGTCTCAGT");
+
+    gen.LargeMutationDNA("AAG", "T");
+
+    cout << gen.GetDNA().first << endl;
+    cout << gen.GetDNA().second << endl;
 
     return 0;
 }

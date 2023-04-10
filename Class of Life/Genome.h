@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "RK.h"
 
 typedef std::string string;
 typedef std::pair<string, string> DNAPair;
@@ -97,14 +98,51 @@ public:
 		}
 	}
 
+	/// <summary> DNA Large Mutation. Replaces the first a with b.</summary>
 	void LargeMutationDNA(string a, string b)
 	{
+		int diff = a.length() - b.length();
 
+		//Find a in DNA first and second
+		int firstOccurance = RKSearch(DNA.first, a);
+		int secondOccurance = RKSearch(DNA.second, a);
+
+		if (firstOccurance <= secondOccurance)
+		{
+			string prefix = DNA.first.substr(0, firstOccurance);
+			string suffix = DNA.first.substr(firstOccurance + b.length() + diff, DNA.first.length() - firstOccurance - b.length() - diff);
+
+			string merge = prefix + b + suffix;
+			
+			DNA.first = merge;
+			DNA.second = GetStringCompliment(merge);
+		}
+		else
+		{
+			string prefix = DNA.second.substr(0, secondOccurance);
+			string suffix = DNA.second.substr(secondOccurance + b.length() + diff, DNA.second.length() - secondOccurance - b.length() - diff);
+
+			string merge = prefix + b + suffix;
+
+			DNA.second = merge;
+			DNA.first = GetStringCompliment(merge);
+		}
+		
 	}
 
+	/// <summary> RNA Large Mutation. Replaces the first a with b.</summary>
 	void LargeMutationRNA(string a, string b)
 	{
+		int diff = a.length() - b.length();
+		//Find a in RNA
+		int occurance = RKSearch(RNA, a);
+		
+		string prefix = RNA.substr(0, occurance);
+		string suffix = RNA.substr(occurance + b.length() + diff, RNA.length() - occurance - b.length() - diff);
 
+		string merge = prefix + b + suffix;
+
+		RNA = merge;
 	}
 	
 	static string CreateDNA(string rna)
