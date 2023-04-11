@@ -8,7 +8,7 @@ int main()
 {
     cout << "Hello World!" << endl;
 
-    Genome gen = Genome("AAGTCTCAGT");
+    Genome gen = Genome("AAGTCTCAGT", "TTCAGAGTCA");
 
     gen.LargeMutationDNA("AAG", "T");
 

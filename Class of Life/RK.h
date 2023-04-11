@@ -11,7 +11,7 @@ typedef std::string string;
     q -> A prime number
 */
 //Rabin-Karp
-/// <summary>Find P in S and return the first index.</summary>
+/// <summary>Find 'pat' in 'txt' and return the first index.</summary>
 int RKSearch(string txt, string pat)
 {
     int q = INT_MAX; // a prime number
