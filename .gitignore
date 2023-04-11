@@ -1,2 +1,5 @@
-/Debug
-/.vs
+Debug/
+x64/
+ClassOfLife/Debug/
+ClassOfLife/x64/
+.vs/
