@@ -12,7 +12,7 @@ private:
 	DNAPair DNA;
 	string RNA;
 
-
+protected:
 	static char GetCharCompliment(char c)
 	{
 		if (c == 'A')
@@ -38,9 +38,13 @@ private:
 
 public:
 
-	Genome(string rna)
+	Genome(string rna, bool hasRNA = true)
 	{
-		RNA = rna;
+		if (hasRNA)
+			RNA = rna;
+		else
+			RNA = "";
+
 		DNA.first = rna;
 		DNA.second = GetStringCompliment(DNA.first);
 	}
