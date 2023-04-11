@@ -12,6 +12,25 @@ private:
 	DNAPair DNA;
 	string RNA;
 
+	string GetReverse(string s)
+	{
+		string out = "";
+
+		for (int i = s.length() - 1; i >= 0; i--)
+			out += s[i];
+
+		return out;
+	}
+	string Replace(string main, string rep, int index, int diff)
+	{
+		string prefix = main.substr(0, index);
+		string suffix = main.substr(index + rep.length() + diff, main.length() - index - rep.length() - diff);
+
+		string merge = prefix + rep + suffix;
+
+		return merge;
+	}
+
 protected:
 	static char GetCharCompliment(char c)
 	{
@@ -38,15 +57,15 @@ protected:
 
 public:
 
-	Genome(string rna, bool hasRNA = true)
+	Genome(string rna)
 	{
-		if (hasRNA)
-			RNA = rna;
-		else
-			RNA = "";
+		RNA = rna;
+	}
 
-		DNA.first = rna;
-		DNA.second = GetStringCompliment(DNA.first);
+	Genome(string first, string second)
+	{
+		DNA.first = first;
+		DNA.second = second;
 	}
 
 	DNAPair GetDNA()
@@ -113,25 +132,14 @@ public:
 
 		if (firstOccurance <= secondOccurance)
 		{
-			string prefix = DNA.first.substr(0, firstOccurance);
-			string suffix = DNA.first.substr(firstOccurance + b.length() + diff, DNA.first.length() - firstOccurance - b.length() - diff);
-
-			string merge = prefix + b + suffix;
-			
-			DNA.first = merge;
-			DNA.second = GetStringCompliment(merge);
+			DNA.first = Replace(DNA.first, b, firstOccurance, diff);
+			DNA.second = Replace(DNA.second, GetStringCompliment(b), firstOccurance, diff);
 		}
 		else
 		{
-			string prefix = DNA.second.substr(0, secondOccurance);
-			string suffix = DNA.second.substr(secondOccurance + b.length() + diff, DNA.second.length() - secondOccurance - b.length() - diff);
-
-			string merge = prefix + b + suffix;
-
-			DNA.second = merge;
-			DNA.first = GetStringCompliment(merge);
+			DNA.second = Replace(DNA.second, b, secondOccurance, diff);
+			DNA.first = Replace(DNA.first, GetStringCompliment(b), secondOccurance, diff);
 		}
-		
 	}
 
 	/// <summary> RNA Large Mutation. Replaces the first a with b.</summary>
@@ -140,15 +148,42 @@ public:
 		int diff = a.length() - b.length();
 		//Find a in RNA
 		int occurance = RKSearch(RNA, a);
-		
-		string prefix = RNA.substr(0, occurance);
-		string suffix = RNA.substr(occurance + b.length() + diff, RNA.length() - occurance - b.length() - diff);
+		RNA = Replace(RNA, b, occurance, diff);
+	}
 
-		string merge = prefix + b + suffix;
+	/// <summary> DNA Reverse Mutation. Replaces the first a with a-reversed.</summary>
+	void ReverseMutationDNA(string a)
+	{
+		//Find a in DNA first and second
+		int firstOccurance = RKSearch(DNA.first, a);
+		int secondOccurance = RKSearch(DNA.second, a);
 
-		RNA = merge;
+		string reva = GetReverse(a);
+
+		if (firstOccurance <= secondOccurance)
+		{
+			DNA.first = Replace(DNA.first, reva, firstOccurance, 0);
+			DNA.second = Replace(DNA.second, GetStringCompliment(reva), firstOccurance, 0);
+		}
+		else
+		{
+			DNA.first = Replace(DNA.first, GetStringCompliment(reva), secondOccurance, 0);
+			DNA.second = Replace(DNA.second, reva, secondOccurance, 0);
+		}
+	}
+
+	/// <summary> RNA Reverse Mutation. Replaces the first a with a-reversed.</summary>
+	void ReverseMutationRNA(string a)
+	{
+		int occurance = RKSearch(RNA, a);
+
+		string reva = GetReverse(a);
+
+		for (int i = 0; i < a.length(); i++)
+			RNA[occurance + i] = reva[i];
 	}
 	
+	/// <summary> Returns the compliment of input string. Has no effect on the actual object as the method is static.</summary>
 	static string CreateDNA(string rna)
 	{
 		return GetStringCompliment(rna);
