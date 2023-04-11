@@ -1,7 +1,0 @@
-﻿  Class of Life.cpp
-C:\Users\Erfan\Documents\GitHub\ClassOfLife\Class of Life\RK.h(18,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Erfan\Documents\GitHub\ClassOfLife\Class of Life\RK.h(19,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Erfan\Documents\GitHub\ClassOfLife\Class of Life\Genome.h(104,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Erfan\Documents\GitHub\ClassOfLife\Class of Life\Genome.h(136,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Erfan\Documents\GitHub\ClassOfLife\Class of Life\Genome.h(29): warning C4715: 'Genome::GetCharCompliment': not all control paths return a value
-  Class of Life.vcxproj -> C:\Users\Erfan\Documents\GitHub\ClassOfLife\x64\Debug\Class of Life.exe
