@@ -12,7 +12,6 @@ class Cell : Genome
 private:
 	vector<Genome> chromosomes;
 
-
 	static void FindComplimentPalindromes(string main, int start, int end, string firstHalf = "")
 	{
 		if (start >= end)
@@ -29,15 +28,9 @@ private:
 			return;
 
 		for (int i = 0; i < s.length(); i++)
-		{
 			for (int j = s.length() - 1; j > i + 1; j--)
-			{
 				if (s[j] == GetCharCompliment(s[i]))
-				{
 					FindComplimentPalindromes(s, i + 1, j - 1, firstHalf + s[i]);
-				}
-			}
-		}
 	}
 
 public:
@@ -65,9 +58,9 @@ public:
 			for (int j = 0; j < pair.first.length(); j++)
 			{
 				if (pair.first[j] == 'A' || pair.first[j] == 'T' || pair.second[j] == 'A' || pair.second[j] == 'T')
-					atCount += 1;
+					atCount++;
 				if (pair.first[j] == 'G' || pair.first[j] == 'C' || pair.second[j] == 'G' || pair.second[j] == 'C')
-					gcCount += 1;
+					gcCount++;
 			}
 
 			if (atCount > 3 * gcCount)
