@@ -11,16 +11,7 @@ class Genome
 private:
 	DNAPair DNA;
 	string RNA;
-
-	string GetReverse(string s)
-	{
-		string out = "";
-
-		for (int i = s.length() - 1; i >= 0; i--)
-			out += s[i];
-
-		return out;
-	}
+	
 	string Replace(string main, string rep, int index, int diff)
 	{
 		string prefix = main.substr(0, index);
@@ -32,6 +23,17 @@ private:
 	}
 
 protected:
+
+	static string GetReverse(string s)
+	{
+		string out = "";
+
+		for (int i = s.length() - 1; i >= 0; i--)
+			out += s[i];
+
+		return out;
+	}
+
 	static char GetCharCompliment(char c)
 	{
 		if (c == 'A')

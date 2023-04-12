@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Genome.h"
+#include "Cell.h"
 using namespace std;
 
 int main()
@@ -10,10 +11,9 @@ int main()
 
     Genome gen = Genome("AAGTCTCAGT", "TTCAGAGTCA");
 
-    gen.LargeMutationDNA("AAG", "T");
-
-    cout << gen.GetDNA().first << endl;
-    cout << gen.GetDNA().second << endl;
+    Cell::FindComplimentPalindromes("AATTAAGCTC");
+    cout << endl;
+    Cell::FindComplimentPalindromes("AATTAAGCTCAATTAAGCTC");
 
     return 0;
 }
