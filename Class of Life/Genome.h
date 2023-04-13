@@ -59,22 +59,25 @@ protected:
 
 public:
 
+	/// <summary> Initialize genome with RNA.</summary>
 	Genome(string rna)
 	{
 		RNA = rna;
 	}
 
+	/// <summary> Initialize genome with DNA.</summary>
 	Genome(string first, string second)
 	{
 		DNA.first = first;
 		DNA.second = second;
 	}
 
+	/// <summary> Returns DNA.</summary>
 	DNAPair GetDNA()
 	{
 		return DNA;
 	}
-
+	/// <summary> Returns RNA.</summary>
 	string GetRNA()
 	{
 		return RNA;
@@ -123,7 +126,7 @@ public:
 		}
 	}
 
-	/// <summary> DNA Large Mutation. Replaces the first a with b.</summary>
+	/// <summary> DNA Large Mutation. Replaces the first 'a' with 'b'.</summary>
 	void LargeMutationDNA(string a, string b)
 	{
 		int diff = a.length() - b.length();
@@ -144,7 +147,7 @@ public:
 		}
 	}
 
-	/// <summary> RNA Large Mutation. Replaces the first a with b.</summary>
+	/// <summary> RNA Large Mutation. Replaces the first 'a' with 'b'.</summary>
 	void LargeMutationRNA(string a, string b)
 	{
 		int diff = a.length() - b.length();
@@ -153,7 +156,7 @@ public:
 		RNA = Replace(RNA, b, occurance, diff);
 	}
 
-	/// <summary> DNA Reverse Mutation. Replaces the first a with a-reversed.</summary>
+	/// <summary> DNA Reverse Mutation. Replaces the first 'a' with 'a'-reversed.</summary>
 	void ReverseMutationDNA(string a)
 	{
 		//Find a in DNA first and second
@@ -174,7 +177,7 @@ public:
 		}
 	}
 
-	/// <summary> RNA Reverse Mutation. Replaces the first a with a-reversed.</summary>
+	/// <summary> RNA Reverse Mutation. Replaces the first 'a' with 'a'-reversed.</summary>
 	void ReverseMutationRNA(string a)
 	{
 		int occurance = RKSearch(RNA, a);

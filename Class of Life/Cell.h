@@ -12,30 +12,10 @@ class Cell : Genome
 private:
 	vector<Genome> chromosomes;
 
-	static void FindComplimentPalindromes(string main, int start, int end, string firstHalf = "")
-	{
-		if (start >= end)
-		{
-			if(firstHalf.length() > 1)
-				std::cout << firstHalf << GetStringCompliment(GetReverse(firstHalf)) << std::endl;
-
-			return;
-		}
-
-		string s = main.substr(start, end - start + 1);
-
-		if (firstHalf.length() > 0 && s[0] != GetCharCompliment(s[s.length() - 1]))
-			return;
-
-		for (int i = 0; i < s.length(); i++)
-			for (int j = s.length() - 1; j > i + 1; j--)
-				if (s[j] == GetCharCompliment(s[i]))
-					FindComplimentPalindromes(s, i + 1, j - 1, firstHalf + s[i]);
-	}
-
 public:
 	Cell(); //Constructor?
 
+	/// <summary>Checks if the cell should die. If so, deletes the cell.</summary>
 	void CellDestruction()
 	{
 		for (int i = 0; i < chromosomes.size(); i++)
@@ -47,7 +27,7 @@ public:
 			for (int j = 0; j < pair.first.length(); j++)
 			{
 				if (pair.second[j] != firstCompliment[j])
-					diffCount += 1;
+					diffCount++;
 			}
 
 			if (diffCount > 5)
@@ -68,24 +48,54 @@ public:
 		}
 	}
 
+	/// <summary> DNA Large Mutation. Swaps the first 'a' in chromosome 'n' with 'b' in chromosome 'm'.</summary>
 	void LargeMutation(string a, int n, string b, int m)
 	{
 		chromosomes[n].LargeMutationDNA(a, b);
 		chromosomes[m].LargeMutationDNA(b, a);
 	}
 
+	/// <summary> DNA Small Mutation. Changes every 'a' to 'b', 'n' times in chromosome 'index'.</summary>
 	void PointMutation(char a, char b, int n, int index)
 	{
 		chromosomes[index].PointMutationDNA(a, b, n);
 	}
 
+	/// <summary> Replaces 'a' with 'a'-reversed in chromosome 'n'.</summary>
 	void ReverseMutation(string a, int n)
 	{
 		chromosomes[n].ReverseMutationDNA(a);
 	}
 
-	static void FindComplimentPalindromes(string main)
+	/// <summary> Finds and prints all Compliment Palindromes in input string. Has no effect on the actual object as the method is static.</summary>
+	static void FindComplimentPalindromes(string s)
 	{
-		FindComplimentPalindromes(main, 0, main.length() - 1);
+		int length = s.length();
+
+		//Cache
+		string sub = "";
+		int sublen = 0;
+		string half = "";
+		string secondHalf = "";
+
+		for (int i = 0; i < length; i++)
+		{
+			for (int j = length - 1; j >= i; j--)
+			{
+				if (s[i] == GetCharCompliment(s[j]))
+				{
+					sublen = j - i + 1;
+
+					if (sublen % 2 != 0 || sublen < 4)
+						continue;
+
+					sub = s.substr(i, sublen);
+					half = s.substr(i, sublen / 2);
+
+					if (half + GetStringCompliment(GetReverse(half)) == sub)
+						std::cout << sub << std::endl;
+				}
+			}
+		}
 	}
 };

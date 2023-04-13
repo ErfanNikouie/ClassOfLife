@@ -9,12 +9,6 @@ int main()
 {
     cout << "Hello World!" << endl;
 
-    Genome gen = Genome("AAGTCTCAGT", "TTCAGAGTCA");
-
-    Cell::FindComplimentPalindromes("AATTAAGCTC");
-    cout << endl;
-    Cell::FindComplimentPalindromes("AATTAAGCTCAATTAAGCTC");
-
     return 0;
 }
 
