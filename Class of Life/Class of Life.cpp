@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Genome.h"
 #include "Cell.h"
+#include "Animal.h"
 using namespace std;
 
 int main()

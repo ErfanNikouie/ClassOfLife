@@ -13,7 +13,20 @@ private:
 	vector<Genome> chromosomes;
 
 public:
-	Cell(); //Constructor?
+	Cell()
+	{
+		chromosomes = vector<Genome>();
+	}
+
+	Cell(Genome* chs, int size)
+	{
+		chromosomes = vector<Genome> (chs, chs + size);
+	}
+
+	vector<Genome> GetChromosomes()
+	{
+		return chromosomes;
+	}
 
 	/// <summary>Checks if the cell should die. If so, deletes the cell.</summary>
 	void CellDestruction()

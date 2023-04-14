@@ -11,7 +11,7 @@ class Genome
 private:
 	DNAPair DNA;
 	string RNA;
-	
+
 	string Replace(string main, string rep, int index, int diff)
 	{
 		string prefix = main.substr(0, index);
@@ -58,6 +58,13 @@ protected:
 	}
 
 public:
+
+	Genome()
+	{
+		RNA = "";
+		DNA.first = "";
+		DNA.second = "";
+	}
 
 	/// <summary> Initialize genome with RNA.</summary>
 	Genome(string rna)
