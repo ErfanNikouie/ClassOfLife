@@ -142,7 +142,9 @@
     <ClCompile Include="Class of Life.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="FYShuffle.h" />
     <ClInclude Include="Genome.h" />
     <ClInclude Include="RK.h" />
   </ItemGroup>

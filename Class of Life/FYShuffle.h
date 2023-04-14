@@ -10,9 +10,7 @@ void Swap(T* a, T* b)
     *b = temp;
 }
 
-/// <summary>
-/// Fisher-Yates Shuffle.
-/// </summary>
+/// <summary> Fisher-Yates Shuffle.</summary>
 template<typename T>
 void FYShuffle(T arr[], int size)
 {
