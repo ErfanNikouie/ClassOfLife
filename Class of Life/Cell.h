@@ -18,6 +18,12 @@ public:
 		chromosomes = vector<Genome>();
 	}
 
+	Cell(Genome gen)
+	{
+		chromosomes = vector<Genome>();
+		chromosomes.push_back(gen);
+	}
+
 	Cell(Genome* chs, int size)
 	{
 		chromosomes = vector<Genome> (chs, chs + size);
@@ -28,8 +34,13 @@ public:
 		return chromosomes;
 	}
 
-	/// <summary>Checks if the cell should die. If so, deletes the cell.</summary>
-	void CellDestruction()
+	vector<Genome>& Chromosomes()
+	{
+		return chromosomes;
+	}
+
+	/// <summary>Checks if the cell should die. If so, returns true.</summary>
+	bool CellDestruction()
 	{
 		for (int i = 0; i < chromosomes.size(); i++)
 		{
@@ -44,7 +55,7 @@ public:
 			}
 
 			if (diffCount > 5)
-				delete this;
+				return true;
 
 			int atCount = 0, gcCount = 0;
 
@@ -57,7 +68,9 @@ public:
 			}
 
 			if (atCount > 3 * gcCount)
-				delete this;
+				return true;
+
+			return false;
 		}
 	}
 
@@ -83,6 +96,8 @@ public:
 	/// <summary> Finds and prints all Compliment Palindromes in input string. Has no effect on the actual object as the method is static.</summary>
 	static void FindComplimentPalindromes(string s)
 	{
+		std::cout << std::endl;
+
 		int length = s.length();
 
 		//Cache
@@ -110,5 +125,7 @@ public:
 				}
 			}
 		}
+
+		std::cout << std::endl;
 	}
 };

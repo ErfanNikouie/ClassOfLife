@@ -201,4 +201,3 @@ public:
 		return GetStringCompliment(rna);
 	}
 };
-

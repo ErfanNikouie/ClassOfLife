@@ -121,6 +121,17 @@ public:
 		cell = c;
 	}
 
+	Cell GetCell()
+	{
+		return cell;
+	}
+
+	/// <summary> Returns the similarity percentage of the two animals.</summary>
+	float operator%(Animal& other)
+	{
+		return GetSimilarity(*this, other);
+	}
+
 	/// <summary> Checks if two species are the same: Similarity > 0.7f and the same amount of chromosomes.</summary>
 	bool operator==(Animal& other)
 	{
