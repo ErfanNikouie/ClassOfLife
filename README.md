@@ -40,17 +40,13 @@ create dna 'string'
 
 ### Show:
 
-Show all created genomes:
+Show all created genomes/cells/animals:
 ```
 show all genome
 ```
-
-Show all created cells:
 ``` 
 show all cell
 ```
-
-Show all created animals:
 ``` 
 show all animal
 ```
