@@ -173,7 +173,7 @@ Exit the program:
 exit
 ```
 
-### Sample Input:
+## Sample Input:
 
 Sample creation of objects:
 ```
