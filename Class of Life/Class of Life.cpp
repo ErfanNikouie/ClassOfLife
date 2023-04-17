@@ -92,15 +92,30 @@ void Create()
     }
     else if (maincmd == "cell")
     {
-        string first = "";
-        cin >> first;
+        string subcmd = "";
+        cin >> subcmd;
 
-        string second = "";
-        cin >> second;
+        if (subcmd == "new")
+        {
+            string first = "";
+            cin >> first;
 
-        Cell cell = Cell(Genome(first, second));
+            string second = "";
+            cin >> second;
 
-        cellList.push_back(cell);
+            Cell cell = Cell(Genome(first, second));
+
+            cellList.push_back(cell);
+        }
+        else if (subcmd == "genome")
+        {
+            int index = 0;
+            cin >> index;
+
+            Cell cell = Cell(genomeList[index]);
+
+            cellList.push_back(cell);
+        }
     }
     else if (maincmd == "animal")
     {
@@ -360,12 +375,12 @@ void Reverse()
     }
 }
 
-void Compliment()
+void Palindrome()
 {
     string input = "";
     cin >> input;
 
-    Cell::FindComplimentPalindromes(input);
+    Cell::FindComplementPalindromes(input);
 }
 
 void Remove()
@@ -408,7 +423,7 @@ int main()
             else if (maincmd == "point") Point();
             else if (maincmd == "large") Large();
             else if (maincmd == "reverse") Reverse();
-            else if (maincmd == "compliment") Compliment();
+            else if (maincmd == "palindrome") Palindrome();
             else if (maincmd == "remove") Remove();
             else if (maincmd == "exit") return 0;
         }
@@ -420,14 +435,3 @@ int main()
 
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

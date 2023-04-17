@@ -45,12 +45,12 @@ public:
 		for (int i = 0; i < chromosomes.size(); i++)
 		{
 			DNAPair pair = chromosomes[i].GetDNA();
-			string firstCompliment = GetStringCompliment(pair.first);
+			string firstComplement = GetStringComplement(pair.first);
 			int diffCount = 0;
 
 			for (int j = 0; j < pair.first.length(); j++)
 			{
-				if (pair.second[j] != firstCompliment[j])
+				if (pair.second[j] != firstComplement[j])
 					diffCount++;
 			}
 
@@ -93,8 +93,8 @@ public:
 		chromosomes[n].ReverseMutationDNA(a);
 	}
 
-	/// <summary> Finds and prints all Compliment Palindromes in input string. Has no effect on the actual object as the method is static.</summary>
-	static void FindComplimentPalindromes(string s)
+	/// <summary> Finds and prints all Complement Palindromes in input string. Has no effect on the actual object as the method is static.</summary>
+	static void FindComplementPalindromes(string s)
 	{
 		std::cout << std::endl;
 
@@ -110,7 +110,7 @@ public:
 		{
 			for (int j = length - 1; j >= i; j--)
 			{
-				if (s[i] == GetCharCompliment(s[j]))
+				if (s[i] == GetCharComplement(s[j]))
 				{
 					sublen = j - i + 1;
 
@@ -120,7 +120,7 @@ public:
 					sub = s.substr(i, sublen);
 					half = s.substr(i, sublen / 2);
 
-					if (half + GetStringCompliment(GetReverse(half)) == sub)
+					if (half + GetStringComplement(GetReverse(half)) == sub)
 						std::cout << sub << std::endl;
 				}
 			}

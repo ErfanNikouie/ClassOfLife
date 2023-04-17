@@ -34,7 +34,7 @@ protected:
 		return out;
 	}
 
-	static char GetCharCompliment(char c)
+	static char GetCharComplement(char c)
 	{
 		if (c == 'A')
 			return 'T';
@@ -48,11 +48,11 @@ protected:
 		if (c == 'C')
 			return 'G';
 	}
-	static string GetStringCompliment(string s)
+	static string GetStringComplement(string s)
 	{
 		string c = s;
 		for (int i = 0; i < c.length(); i++)
-			c[i] = GetCharCompliment(c[i]);
+			c[i] = GetCharComplement(c[i]);
 
 		return c;
 	}
@@ -99,13 +99,13 @@ public:
 			if (DNA.first[i] == a)
 			{
 				DNA.first[i] = b;
-				DNA.second[i] = GetCharCompliment(b);
+				DNA.second[i] = GetCharComplement(b);
 			}
 
 			if (DNA.second[i] == a)
 			{
 				DNA.second[i] = b;
-				DNA.first[i] = GetCharCompliment(b);
+				DNA.first[i] = GetCharComplement(b);
 			}
 
 			if ((DNA.first[i] == a) || (DNA.second[i] == a))
@@ -145,12 +145,12 @@ public:
 		if (firstOccurance <= secondOccurance)
 		{
 			DNA.first = Replace(DNA.first, b, firstOccurance, diff);
-			DNA.second = Replace(DNA.second, GetStringCompliment(b), firstOccurance, diff);
+			DNA.second = Replace(DNA.second, GetStringComplement(b), firstOccurance, diff);
 		}
 		else
 		{
 			DNA.second = Replace(DNA.second, b, secondOccurance, diff);
-			DNA.first = Replace(DNA.first, GetStringCompliment(b), secondOccurance, diff);
+			DNA.first = Replace(DNA.first, GetStringComplement(b), secondOccurance, diff);
 		}
 	}
 
@@ -175,11 +175,11 @@ public:
 		if (firstOccurance <= secondOccurance)
 		{
 			DNA.first = Replace(DNA.first, reva, firstOccurance, 0);
-			DNA.second = Replace(DNA.second, GetStringCompliment(reva), firstOccurance, 0);
+			DNA.second = Replace(DNA.second, GetStringComplement(reva), firstOccurance, 0);
 		}
 		else
 		{
-			DNA.first = Replace(DNA.first, GetStringCompliment(reva), secondOccurance, 0);
+			DNA.first = Replace(DNA.first, GetStringComplement(reva), secondOccurance, 0);
 			DNA.second = Replace(DNA.second, reva, secondOccurance, 0);
 		}
 	}
@@ -195,9 +195,9 @@ public:
 			RNA[occurance + i] = reva[i];
 	}
 	
-	/// <summary> Returns the compliment of input string. Has no effect on the actual object as the method is static.</summary>
+	/// <summary> Returns the complement of input string. Has no effect on the actual object as the method is static.</summary>
 	static string CreateDNA(string rna)
 	{
-		return GetStringCompliment(rna);
+		return GetStringComplement(rna);
 	}
 };
