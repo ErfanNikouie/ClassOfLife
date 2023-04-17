@@ -1,6 +1,7 @@
 # ClassOfLife
 
 This program uses a command-style interaction. These are all the valid commands:
+> **_Or jump to:_ [Sample Input](#sample-input)**
 
 
 ## Commands:
@@ -61,12 +62,17 @@ show cell 'index'
 
 ### Cell:
 
+Add a new chromosome(genome) to a cell:
 ``` 
 cell add 'index' new 'string' 'string'
 ```
+
+Add a new chromosome(genome) to a cell from an existing genome:
 ``` 
 cell add 'index' genome 'index'
 ```
+
+Destruct a created cell:
 ``` 
 cell destruct 'index'
 ``` 
@@ -165,4 +171,37 @@ remove animal 'index'
 Exit the program:
 ```
 exit
+```
+
+### Sample Input:
+
+Sample creation of objects:
+```
+create genome rna AATTAAGCTC
+create genome dna AATTAAGCTC TTAATTCGAG
+create genome dna ATTGCGATCG TAACGCTAGC
+show all genome
+
+create cell genome 1
+create cell genome 2
+show all cell
+
+create animal cell 0
+create animal cell 0
+create animal cell 1
+show all animal
+
+```
+
+Sample use of the created objects:
+```
+animal sim 0 1
+animal same 0 1
+animal arep 0
+animal srep 0 2
+animal sim 0 4
+animal same 0 4
+remove animal 1
+show all animal
+
 ```
